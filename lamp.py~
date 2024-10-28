@@ -1,0 +1,12 @@
+class Lamp:
+    def __init__ (self):
+        self.on = False
+        self.intensity = "low"
+
+    def pwr (self):
+        if self.on:
+            self.powerOff ()
+        else:
+            self.powerOn ()
+
+    

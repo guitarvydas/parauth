@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dual Light Bulb Controller with Inheritance</title>
+  <style>
+    .light-bulb {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: grey; /* Default color for off state */
+      margin: 20px auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .controls {
+      text-align: center;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="light-bulb" id="lightBulb1"></div>
+  <div class="light-bulb" id="lightBulb2"></div>
+  
+  <div class="controls">
+    <h3>Light Bulb 1 Controls</h3>
+    <button onclick="lightBulb1.togglePower()">Power Toggle</button>
+    <button onclick="lightBulb1.toggleColor()">Color Toggle (White/Red)</button>
+    
+    <h3>Light Bulb 2 Controls</h3>
+    <button onclick="lightBulb2.togglePower()">Power Toggle</button>
+    <button onclick="lightBulb2.toggleColor()">Color Toggle (White/Red)</button>
+  </div>
+
+  <script>
+    class LightBulb {
+      constructor(elementId, defaultColor = 'white') {
+        this.element = document.getElementById(elementId);
+        this.isOn = false; // Track if light is on or off
+        this.color = defaultColor; // Initial color state
+      }
+
+      togglePower() {
+        if (this.isOn) {
+          this.turnOff();
+        } else {
+          this.turnOn(this.color);
+        }
+      }
+
+      toggleColor() {
+        if (this.isOn) {
+          this.color = this.color === 'white' ? 'red' : 'white';
+          this.turnOn(this.color);
+        }
+      }
+
+      turnOff() {
+        this.element.style.backgroundColor = 'grey';
+        this.isOn = false;
+      }
+
+      turnOn(color) {
+        this.element.style.backgroundColor = color;
+        this.isOn = true;
+      }
+    }
+
+    // LightBulb2 class inherits from LightBulb with a default color of red
+    class LightBulb2 extends LightBulb {
+      constructor(elementId) {
+        super(elementId, 'red'); // Set the default color to red for LightBulb2
+      }
+    }
+
+    // Initialize LightBulb instances
+    const lightBulb1 = new LightBulb('lightBulb1');      // Defaults to white
+    const lightBulb2 = new LightBulb2('lightBulb2');     // Defaults to red
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+create an HTML program that displays a light bulb in one of three states
+1. off
+2. on, with a white color
+3. on, with a red color
+create a Javascript class to control the light bulb

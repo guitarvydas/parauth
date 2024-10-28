@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Light Bulb Controller</title>
+  <style>
+    .light-bulb {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: grey; /* Default color for off state */
+      margin: 50px auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .controls {
+      text-align: center;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="light-bulb" id="lightBulb"></div>
+  
+  <div class="controls">
+    <button onclick="lightBulb.togglePower()">Power Toggle</button>
+    <button onclick="lightBulb.toggleColor()">Color Toggle (White/Red)</button>
+  </div>
+
+  <script>
+    class LightBulb {
+      constructor(elementId) {
+        this.element = document.getElementById(elementId);
+        this.isOn = false; // Track if light is on or off
+        this.isWhite = true; // Track current color (true = white, false = red)
+      }
+
+      togglePower() {
+        if (this.isOn) {
+          this.turnOff();
+        } else {
+          this.turnOnWhite();
+        }
+      }
+
+      toggleColor() {
+        if (this.isOn) {
+          if (this.isWhite) {
+            this.turnOnRed();
+          } else {
+            this.turnOnWhite();
+          }
+        }
+      }
+
+      turnOff() {
+        this.element.style.backgroundColor = 'grey';
+        this.isOn = false;
+      }
+
+      turnOnWhite() {
+        this.element.style.backgroundColor = 'white';
+        this.isOn = true;
+        this.isWhite = true;
+      }
+
+      turnOnRed() {
+        this.element.style.backgroundColor = 'red';
+        this.isOn = true;
+        this.isWhite = false;
+      }
+    }
+
+    // Initialize the LightBulb object
+    const lightBulb = new LightBulb('lightBulb');
+  </script>
+
+</body>
+</html>

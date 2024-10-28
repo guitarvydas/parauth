@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Light Bulb Controller</title>
+  <style>
+    .light-bulb {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: grey; /* Default color for off state */
+      margin: 50px auto;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .controls {
+      text-align: center;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="light-bulb" id="lightBulb"></div>
+  
+  <div class="controls">
+    <button onclick="lightBulb.turnOff()">Turn Off</button>
+    <button onclick="lightBulb.turnOnWhite()">Turn On (White)</button>
+    <button onclick="lightBulb.turnOnRed()">Turn On (Red)</button>
+  </div>
+
+  <script>
+    class LightBulb {
+      constructor(elementId) {
+        this.element = document.getElementById(elementId);
+      }
+
+      turnOff() {
+        this.element.style.backgroundColor = 'grey';
+      }
+
+      turnOnWhite() {
+        this.element.style.backgroundColor = 'white';
+      }
+
+      turnOnRed() {
+        this.element.style.backgroundColor = 'red';
+      }
+    }
+
+    // Initialize the LightBulb object
+    const lightBulb = new LightBulb('lightBulb');
+  </script>
+
+</body>
+</html>

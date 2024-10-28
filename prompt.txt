@@ -1,0 +1,17 @@
+create an HTML program that displays a light bulb in one of three states
+1. off
+2. on, with a white color
+3. on, with a red color
+create a Javascript class to control the light bulb
+--------
+add a toggle button that turns the light bulb on and off
+when the light bulb is turned on, it defaults to white
+add another toggle button that toggles the light from white to red, but, only works when the light is turned on
+---
+add a second light bulb that inherits the code from the first light bulb
+---
+create a second class LightBulb2 that inherits from LightBulb and use LightBulb2 for the second light bulb
+---
+change the togglePower method of LightBulb2 to turn the second light bulb on with a red color
+---
+make the color a state variable that belongs to the LightBulb class
